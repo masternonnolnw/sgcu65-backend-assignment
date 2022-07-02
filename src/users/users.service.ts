@@ -19,7 +19,7 @@ export class UsersService {
     return await this.userModel.find().exec();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return await this.userModel.findById(id).exec();
   }
 
@@ -39,17 +39,23 @@ export class UsersService {
     for (let i = 0; i < allUsers.length; i++) {
       let check = true;
       if (firstname) {
-        if (allUsers[i].firstname.indexOf(firstname) <= -1) {
+        if (
+          allUsers[i].firstname
+            .toLowerCase()
+            .indexOf(firstname.toLowerCase()) <= -1
+        ) {
           check = false;
         }
       }
       if (surname) {
-        if (allUsers[i].surname.indexOf(surname) <= -1) {
+        if (
+          allUsers[i].surname.toLowerCase().indexOf(surname.toLowerCase()) <= -1
+        ) {
           check = false;
         }
       }
       if (role) {
-        if (allUsers[i].role.indexOf(role) <= -1) {
+        if (allUsers[i].role.toLowerCase().indexOf(role.toLowerCase()) <= -1) {
           check = false;
         }
       }
