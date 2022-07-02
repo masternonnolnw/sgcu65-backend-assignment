@@ -81,6 +81,7 @@ export class TeamsService {
       return 'Already have this user';
     } catch (error) {
       console.log(error);
+      return 'TeamId or UsersId wrong.';
     }
   }
 }

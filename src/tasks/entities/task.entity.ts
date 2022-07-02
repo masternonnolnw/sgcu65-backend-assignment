@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { User } from 'src/users/entities/user.schema';
+import { Team } from 'src/teams/entities/team.entity';
 
 export type TaskDocument = Task & Document;
 
@@ -15,8 +15,8 @@ export class Task {
   @Prop()
   status: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
-  users: User[];
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }] })
+  teams: Team[];
 
   @Prop()
   deadline: Date;

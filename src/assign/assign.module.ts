@@ -3,9 +3,10 @@ import { AssignService } from './assign.service';
 import { AssignController } from './assign.controller';
 import { TasksModule } from 'src/tasks/tasks.module';
 import { UsersModule } from 'src/users/users.module';
+import { TeamsModule } from 'src/teams/teams.module';
 
 @Module({
-  imports: [TasksModule, UsersModule],
+  imports: [TasksModule, TeamsModule],
   controllers: [AssignController],
   providers: [AssignService],
 })

@@ -6,7 +6,7 @@ export class AssignController {
   constructor(private readonly assignService: AssignService) {}
 
   @Post()
-  assign(@Body('taskId') taskId: string, @Body('userId') userId: string) {
-    return this.assignService.assign(taskId, userId);
+  assign(@Body('taskId') taskId: string, @Body('teamId') teamId: string) {
+    return this.assignService.assign(taskId, teamId);
   }
 }
