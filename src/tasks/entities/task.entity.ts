@@ -16,7 +16,7 @@ export class Task {
   status: string;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
-  user: User[];
+  users: User[];
 
   @Prop()
   deadline: Date;
