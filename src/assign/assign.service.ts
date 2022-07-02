@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TasksService } from 'src/tasks/tasks.service';
 import { TeamsService } from 'src/teams/teams.service';
-import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AssignService {
