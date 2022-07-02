@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { Task } from 'src/tasks/entities/task.entity';
+import { Team } from 'src/teams/entities/team.entity';
 
 export type UserDocument = User & Document;
 
@@ -20,6 +21,9 @@ export class User {
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }] })
   tasks: Task[];
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }] })
+  teams: Team[];
 
   @Prop()
   role: string;
