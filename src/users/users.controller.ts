@@ -20,7 +20,7 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get('/all')
+  @Get()
   search(
     @Body('firstname') firstname: string,
     @Body('surname') surname: string,
