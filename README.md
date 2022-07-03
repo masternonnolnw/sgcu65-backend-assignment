@@ -182,4 +182,41 @@ Team
 - [SQL & NoSQL](https://medium.com/@todspolwonhchomphu/sql-คืออะไร-และ-nosql-คืออะไร-561c750dbe4d)
 - [SQL vs NoSQL](https://phuri.medium.com/nosql-คืออะไร-ต่างจาก-rdbms-หรือ-sql-database-อย่างไร-dd8ac91a4197)
 
+
+## how to run
+   - run คำสั่ง npm install
+   - run คำสั่ง npm run start
+
+## อธิบาย api
+   - แบ่ง route ออกเป็น 2 ส่วน คือ ส่วนของ "admin" ที่ต้อง login ด้วย user ที่มี role เป็น admin กับ ส่วนธรรมดาที่เข้าได้ปกติ
+   - ส่วนของหน้าที่ไม่ต้องมีสิทธิ์ admin จะอยู่ใน route "/auth" ซึ่งมีรายละเอียดดังนี้
+      - POST "/auth/login" ใส่ body เป็น json ที่มี email กับ password เพื่อ login เข้าสู่ระบบ
+      - POST "/auth/login" ใส่ body เป็น json ที่มี email กับ password เพื่อลงทะเบียน email ใหม่ (จะสร้าง user ใหม่อัตโนมิติโดยเชื่อมกับ email นี้)
+      - POST "/auth/signout" เพื่อออกจากระบบ
+      - GET "/auth/currentUser" เพื่อดูข้อมูลของ user ที่กำลังใช้งานอยู่
+      - POST "/auth/resetPassword" ใส่ body เป็น email เพื่อส่งลิงค์ reset password ไปที่ email นั้นๆ.
+      
+   - ส่วนของหน้า admin (ต้อง login ด้วย user ที่มี role เป็น admin ก่อน)   (( for test username: hr@isd.com  password: admin_hr ))
+      - Users
+         - POST "admin/users" ใส่ body เป็น email, firstname, surname, salary (number), role เพื่อสร้าง user ใหม่ (ถ้าสร้างด้วยวิธีนี้จะไม่เชื่อมกับ email password ที่ใช้ login)
+         - GET "admin/users/all" เพื่อเรียกดู user ทั้งหมด
+         - GET "admin/users/{id}" ใส่ id เพื่อเรียกดู user ที่มี id นั้นๆ
+         - PATCH "admin/users/{id}" ใส่ id และ body ของข้อมูลที่ต้องการแก้ไขเพื่อ อัพเดทข้อมูล user ที่มี id นั้นๆ
+         - DELETE "admin/users/{id}" ใส่ id เพื่อลบ user นั้นๆ
+      - Tasks
+         - POST "admin/tasks" ใส่ body เป็น name, content, status, deadline (Date) เพื่อสร้าง tasks ใหม่
+         - GET "admin/tasks" เพื่อเรียกดู task ทั้งหมด
+         - GET "admin/tasks/{id}" ใส่ id เพื่อเรียกดู task ที่มี id นั้นๆ
+         - PATCH "admin/tasks/{id}" ใส่ id และ body ของข้อมูลที่ต้องการแก้ไขเพื่อ อัพเดทข้อมูล task ที่มี id นั้นๆ
+         - DELETE "admin/tasks/{id}" ใส่ id เพื่อลบ task นั้นๆ
+      - Team
+         - POST "admin/teams" ใส่ body เป็น name เพื่อสร้าง Team ใหม่
+         - GET "admin/teams" เพื่อเรียกดู teams ทั้งหมด
+         - GET "admin/teams/{id}" ใส่ id เพื่อเรียกดู teams ที่มี id นั้นๆ
+         - PATCH "admin/teams/{id}" ใส่ id และ body ของข้อมูลที่ต้องการแก้ไขเพื่อ อัพเดทข้อมูล teams ที่มี id นั้นๆ
+         - DELETE "admin/teams/{id}" ใส่ id เพื่อลบ teams นั้นๆ
+         - POST "admin/teams/assign" ใส่ body เป็น teamId และ userId เพื่อ เพิ่ม user ที่มี id นั้นๆ เข้าทีมที่มี id นั้นๆ
+      - Assign
+         - POST "admin/assign" ใส่ body เป็น taskId และ teamId เพื่อ assign task ที่มี id นั้นๆ ให้ team ที่มี id นั้นๆ
+         
 ## นายนนทพันธุ์ สิทธิโชติเลิศภักดี
