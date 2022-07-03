@@ -12,6 +12,7 @@ import { TeamsModule } from './teams/teams.module';
 import { AuthModule } from './auth/auth.module';
 import { PreauthMiddleware } from './middleware/PreauthMiddleware';
 import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ConfigModule } from '@nestjs/config';
     TeamsModule,
     AuthModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
