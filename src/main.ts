@@ -3,6 +3,16 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
+import { initializeApp } from 'firebase/app';
+const firebaseConfig = {
+  apiKey: 'AIzaSyBXFAESWAech5bIG59xjwLsSIZRXnoWahE',
+  authDomain: 'sgcu-isd.firebaseapp.com',
+  projectId: 'sgcu-isd',
+  storageBucket: 'sgcu-isd.appspot.com',
+  messagingSenderId: '663186769431',
+  appId: '1:663186769431:web:f0d0cc83104e8b4c31fe52',
+};
+const app = initializeApp(firebaseConfig);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
