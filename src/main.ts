@@ -12,7 +12,7 @@ const firebaseConfig = {
   messagingSenderId: '663186769431',
   appId: '1:663186769431:web:f0d0cc83104e8b4c31fe52',
 };
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 

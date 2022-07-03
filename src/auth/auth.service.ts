@@ -18,7 +18,6 @@ export class AuthService {
     const auth = getAuth();
     const user = await signInWithEmailAndPassword(auth, email, password).catch(
       (error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         return errorMessage;
         // ..
@@ -46,12 +45,11 @@ export class AuthService {
       return 'Password is required';
     }
     const auth = getAuth();
-    const user = await createUserWithEmailAndPassword(
+    await createUserWithEmailAndPassword(
       auth,
       createUserDto.email,
       password,
     ).catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       return errorMessage;
       // ..
@@ -67,7 +65,7 @@ export class AuthService {
   }
   async signout() {
     const auth = getAuth();
-    const res = await signOut(auth).catch((error) => {
+    await signOut(auth).catch((error) => {
       return error.message;
     });
     return 'signout success';
@@ -79,8 +77,7 @@ export class AuthService {
   }
   async resetPassword(email: string) {
     const auth = getAuth();
-    const res = sendPasswordResetEmail(auth, email).catch((error) => {
-      const errorCode = error.code;
+    await sendPasswordResetEmail(auth, email).catch((error) => {
       const errorMessage = error.message;
       // ..
       return errorMessage;
