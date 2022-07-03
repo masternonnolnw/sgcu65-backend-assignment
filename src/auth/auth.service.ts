@@ -35,13 +35,13 @@ export class AuthService {
       }
     }
 
-    var createUserDto = new CreateUserDto();
+    const createUserDto = new CreateUserDto();
     createUserDto.email = createAuthDto.email;
     createUserDto.firstname = createAuthDto.firstname;
     createUserDto.surname = createAuthDto.surname;
     createUserDto.salary = createAuthDto.salary;
     createUserDto.role = createAuthDto.role;
-    var password = createAuthDto.password;
+    const password = createAuthDto.password;
     if (!password) {
       return 'Password is required';
     }

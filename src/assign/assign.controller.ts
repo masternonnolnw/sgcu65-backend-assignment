@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AssignService } from './assign.service';
 
-@Controller('assign')
+@Controller('/admin/assign')
 export class AssignController {
   constructor(private readonly assignService: AssignService) {}
 
