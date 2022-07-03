@@ -73,6 +73,14 @@ export class AuthService {
   async checkCurrentUser() {
     const auth = getAuth();
     const user = auth.currentUser;
+
+    const allUsers = await this.userService.findAll();
+    for (let i = 0; i < allUsers.length; i++) {
+      if (allUsers[i].email == user.email) {
+        return allUsers[i];
+      }
+    }
+
     return user;
   }
   async resetPassword(email: string) {
