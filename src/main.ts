@@ -5,12 +5,12 @@ import { AppModule } from './app.module';
 
 import { initializeApp } from 'firebase/app';
 const firebaseConfig = {
-  apiKey: 'AIzaSyBXFAESWAech5bIG59xjwLsSIZRXnoWahE',
-  authDomain: 'sgcu-isd.firebaseapp.com',
-  projectId: 'sgcu-isd',
-  storageBucket: 'sgcu-isd.appspot.com',
-  messagingSenderId: '663186769431',
-  appId: '1:663186769431:web:f0d0cc83104e8b4c31fe52',
+  apiKey: process.env.FIREBASE_CONFIG_API_KEY,
+  authDomain: process.env.FIREBASE_CONFIG_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_CONFIG_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_CONFIG_STRORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_CONFIG_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_CONFIG_APP_ID,
 };
 initializeApp(firebaseConfig);
 async function bootstrap() {

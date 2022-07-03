@@ -11,13 +11,15 @@ import { AssignModule } from './assign/assign.module';
 import { TeamsModule } from './teams/teams.module';
 import { AuthModule } from './auth/auth.module';
 import { PreauthMiddleware } from './middleware/PreauthMiddleware';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env.dev', '.env.prod'],
+    }),
     UsersModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://master:1234@cluster0.azu55.mongodb.net/?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     TasksModule,
     AssignModule,
     TeamsModule,
